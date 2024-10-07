@@ -37,8 +37,7 @@
         <div class="gallery-nav">
           <a class="nav-item" href="index.html">Home</a>
           <a class="nav-item" href="about.html">About</a>
-          <button onClick="showPhotography()" class="nav-item">Photography</button> 
-          <button onClick="showCollage()" class="nav-item">Collage</button> 
+          <button onClick="toggleGallery()" class="nav-item" id="gallery-toggle">Photography</button> 
         </div>
 
         <div class="media-scroller" id="photography">
@@ -639,20 +638,24 @@
       </div>
 
       <script>
-        function showCollage() {
-          let photography = document.getElementById("photography"); 
-          let collage  = document.getElementById("collage");
+        function toggleGallery() {
+          if (photography.style.display === `none`) {
+            let button = document.getElementById("photography"); 
+            let collage  = document.getElementById("collage");
 
-          photography.style.display = `none`;
-          collage.style.display = `grid`;
-        }
+            document.getElementById("gallery-toggle").innerHTML = "Photography";
 
-        function showPhotography() {
-          let photography = document.getElementById("photography"); 
-          let collage  = document.getElementById("collage");
+            photography.style.display = `grid`;
+            collage.style.display = `none`;
+          } else {
+            let photography = document.getElementById("photography"); 
+            let collage  = document.getElementById("collage");
 
-          photography.style.display = `grid`;
-          collage.style.display = `none`;
+            document.getElementById("gallery-toggle").innerHTML = "Collage";
+
+            photography.style.display = `none`;
+            collage.style.display = `grid`;
+          }
         }
       </script>
     </div>
